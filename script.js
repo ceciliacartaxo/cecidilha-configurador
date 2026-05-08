@@ -6,7 +6,7 @@ const steps = [
     id: 'tamanho',
     eyebrow: 'Etapa 1 de 8',
     title: 'Tamanho do caderno',
-    desc: 'O tamanho define a experiência de uso. Cadernos de votos costumam ser menores e mais intimistas, enquanto diários de noiva pedem mais espaço.',
+    desc: 'O tamanho define a experiência de uso.',
     type: 'option',
     options: [
       { icon: '📄', name: 'A6 — Pequeno', detail: '10,5 × 14,8 cm · intimista, cabe no bolso', price: 'base', value: 'A6', cost: 0 },
