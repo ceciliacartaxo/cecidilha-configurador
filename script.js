@@ -28,13 +28,12 @@ const steps = [
     id: 'capa',
     eyebrow: 'Etapa 3 de 8',
     title: 'Material da capa',
-    desc: 'A capa é o primeiro toque — o que a noiva sente ao pegar o caderno pela primeira vez. O linho artesanal tem uma textura que nenhum papel laminado replica.',
-    tip: '<strong>Todos os linhos</strong> da Cecidilha são naturais e preparados à mão — nenhuma peça passa por terceiros.',
+    desc: 'Estamos considerando o linho da cor vermelha.',
+    tip: 'Para dois cadernos 0.5 metros já é o suficiente.',
     type: 'option',
     options: [
-      { icon: '🪢', name: 'Linho natural cru', detail: 'Tom bege neutro, textura rústica e sofisticada', price: 'incluso', value: 'linho-cru', cost: 0 },
-      { icon: '🤍', name: 'Linho belga off-white', detail: 'Trama mais fina, visual refinado e atemporal', price: '+R$ 8', value: 'linho-belga', cost: 8 },
-      { icon: '🎨', name: 'Linho colorido', detail: 'Cor à escolha da noiva — tingido ao natural', price: '+R$ 10', value: 'linho-colorido', cost: 10 },
+      { icon: '🪢', name: 'Linho puro', price: 'R$ 47,45 / meio metro', value: 'linho-puro', cost: 47.45 },
+      { icon: '🤍', name: 'Linho misto', price: 'R$ 14,95 / meio metro', value: 'linho-misto', cost: 14.95 },
     ]
   },
   {
