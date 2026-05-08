@@ -52,8 +52,6 @@
     color: var(--ink);
   }
 
-  .logo em { font-style: italic; color: var(--accent); }
-
   .tagline {
     font-size: 11px;
     letter-spacing: 0.3em;
