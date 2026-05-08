@@ -7,7 +7,7 @@ const steps = [
     eyebrow: 'Etapa 1 de 8',
     title: 'Tamanho do caderno',
     desc: 'O tamanho define a experiência de uso.',
-    tip: 'Acima de 20 x 17 cm encarecería o projeto porque teríamos que contratar o recorte do papel com terceiros. Nas sugestões que fiz eu tenho ferramentas para executá-lo.',
+    tip: 'Acima de 20 x 17 cm encareceria o projeto porque teríamos que contratar o recorte do papel com terceiros. Nas sugestões que fiz eu tenho ferramentas para executá-lo.',
     type: 'option',
     options: [
       { icon: '📄', name: 'Pequeno', detail: '16 × 13,6 cm · tamanho do cancioneiro Cecidilha', price: 'base', value: 'pequeno', cost: 0 },
@@ -19,10 +19,10 @@ const steps = [
     id: 'paginas',
     eyebrow: 'Etapa 2 de 8',
     title: 'Número de páginas',
-    desc: 'Pense no uso que o casal vai dar ao caderno. Para votos, poucas páginas bastam. Para diário de lua de mel, mais espaço é bem-vindo.',
+    desc: 'O cancioneiro Cecidilha (o que vendi na feira), tem 128 páginas. Para que o caderno não fique sem volume, sugiro 64 páginas no mínimo. A quantidade também depende do papel escolhido por vocês para o miolo',
     tip: '<strong>Dica:</strong> cada folha tem frente e verso — 32 páginas equivalem a 16 folhas no miolo.',
     type: 'number',
-    min: 16, max: 128, step: 8, default: 32, unit: 'páginas'
+    min: 32, max: 128, step: 8, default: 32, unit: 'páginas'
   },
   {
     id: 'capa',
