@@ -7,7 +7,7 @@ const steps = [
     eyebrow: 'Etapa 1 de 8',
     title: 'Tamanho do caderno',
     desc: 'O tamanho define a experiência de uso.',
-    tip: 'Acima de 20 x 17 cm encarecería o projeto porque teríamos que contratar o recorte do papel com terceiros. Nas sugestões que fiz eu tenho ferramentas para executá-lo.'.
+    tip: 'Acima de 20 x 17 cm encarecería o projeto porque teríamos que contratar o recorte do papel com terceiros. Nas sugestões que fiz eu tenho ferramentas para executá-lo.',
     type: 'option',
     options: [
       { icon: '📄', name: 'Pequeno', detail: '16 × 13,6 cm · tamanho do cancioneiro Cecidilha', price: 'base', value: 'pequeno', cost: 0 },
