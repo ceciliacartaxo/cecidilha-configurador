@@ -7,11 +7,12 @@ const steps = [
     eyebrow: 'Etapa 1 de 8',
     title: 'Tamanho do caderno',
     desc: 'O tamanho define a experiência de uso.',
+    tip: 'Acima de 20 x 17 cm encarecería o projeto porque teríamos que contratar o recorte do papel com terceiros. Nas sugestões que fiz eu tenho ferramentas para executá-lo.'.
     type: 'option',
     options: [
-      { icon: '📄', name: 'A6 — Pequeno', detail: '10,5 × 14,8 cm · intimista, cabe no bolso', price: 'base', value: 'A6', cost: 0 },
-      { icon: '📋', name: 'A5 — Médio', detail: '14,8 × 21 cm · o mais popular em casamentos', price: 'incluso na base', value: 'A5', cost: 5 },
-      { icon: '📓', name: 'A4 — Grande', detail: '21 × 29,7 cm · diário, livro de memórias', price: '+R$ 12', value: 'A4', cost: 12 },
+      { icon: '📄', name: 'Pequeno', detail: '16 × 13,6 cm · tamanho do cancioneiro Cecidilha', price: 'base', value: 'pequeno', cost: 0 },
+      { icon: '📋', name: 'Médio', detail: '18 × 15.5 cm', price: 'base', value: 'medio', cost: 0 },
+      { icon: '📓', name: 'Grande', detail: '20 × 17 cm', price: 'base', value: 'grande', cost: 0 },
     ]
   },
   {
