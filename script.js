@@ -300,18 +300,6 @@ function renderSummary(container) {
   const div = document.createElement('div');
   div.className = 'step visible';
 
-  // Miolo: mostra custo calculado por folhas
-  let mioloDetalhe = '';
-  if (selections['miolo']) {
-    const mioloStep = steps.find(s => s.id === 'miolo');
-    const mioloOpt = mioloStep.options.find(o => o.value === selections['miolo']);
-    if (mioloOpt) {
-      const folhas = pageCount / 2;
-      const subtotal = (mioloOpt.cost * folhas).toFixed(2).replace('.', ',');
-      mioloDetalhe = ` · ${folhas} folhas · R$ ${subtotal}`;
-    }
-  }
-
   let rows = `
     <div class="sum-row">
       <div>
@@ -326,12 +314,11 @@ function renderSummary(container) {
     if (s.type === 'option') {
       const sel = s.options.find(o => o.value === selections[s.id]);
       if (sel) {
-        const extra = s.id === 'miolo' ? mioloDetalhe : '';
         rows += `
           <div class="sum-row">
             <div>
               <div class="sum-lbl">${stepNames[s.id] || s.id}</div>
-              <div class="sum-val">${sel.name}${extra}</div>
+              <div class="sum-val">${sel.name}</div>
             </div>
             <button class="sum-edit" onclick="jumpTo(${i})">alterar</button>
           </div>
@@ -348,7 +335,7 @@ function renderSummary(container) {
     <div class="summary-price">
       <div class="price-eyebrow">Estimativa de valor</div>
       <div class="price-big">R$ ${total}</div>
-      <div class="price-note">Valor aproximado · sujeito a confirmação após contato</div>
+      <div class="price-note">Valor estimado com base nas suas escolhas.<br>O valor final será confirmado por email em até 48h.</div>
     </div>
 
     <div class="summary-card">
@@ -356,11 +343,45 @@ function renderSummary(container) {
       ${rows}
     </div>
 
-    <button class="btn-email" onclick="sendEmail()">Enviar para a Cecidilha ✉</button>
+    <div class="summary-card" style="margin-top: 1rem;">
+      <div class="summary-card-title">Como funciona</div>
+      <div class="sum-row" style="display:block; padding: 16px 18px;">
+        <div class="how-item">
+          <div class="how-num">01</div>
+          <div>
+            <div class="how-title">Confirmação do pedido</div>
+            <div class="how-desc">Após o envio, entro em contato em até 48h para confirmar todos os detalhes e o valor final.</div>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">02</div>
+          <div>
+            <div class="how-title">Pagamento de 50% via Pix</div>
+            <div class="how-desc">Com o pedido confirmado, você paga metade do valor para eu dar início à produção e adquirir os materiais.</div>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">03</div>
+          <div>
+            <div class="how-title">Produção artesanal — até 30 dias</div>
+            <div class="how-desc">Cada caderno é feito à mão por mim, do início ao fim. O prazo de até 30 dias garante cuidado em cada etapa.</div>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">04</div>
+          <div>
+            <div class="how-title">Entrega e pagamento final</div>
+            <div class="how-desc">Os outros 50% são pagos na entrega. Você pode retirar na Asa Norte (Brasília) ou receber pelos Correios.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-email" onclick="sendEmail()" style="margin-top: 1.5rem;">Enviar pedido para a Cecidilha ✉</button>
 
     <p class="footer-note">
       Ao clicar, seu app de email abrirá com o resumo já preenchido.<br>
-      Basta enviar — responderemos em até 48h.
+      Basta enviar — responderei em até 48h.
     </p>
   `;
 
@@ -380,8 +401,8 @@ function sendEmail() {
     }
   });
 
-  body += `\nEstimativa: R$ ${total}\n\n`;
-  body += `Pode me passar mais detalhes sobre prazo e forma de pagamento?\n\nObrigada!`;
+  body += `\nEstimativa de valor: R$ ${total}\n\n`;
+  body += `Aguardo a confirmação do valor final e os próximos passos!\n\nObrigada!`;
 
   const subject = encodeURIComponent('Pedido de caderno artesanal · Cecidilha');
   const bodyEnc = encodeURIComponent(body);
