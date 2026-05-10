@@ -11,7 +11,7 @@ const steps = [
     type: 'option',
     options: [
       { icon: '📄', name: 'Pequeno', detail: '16 × 13,6 cm · tamanho do cancioneiro Cecidilha', price: 'base', value: 'pequeno', cost: 0 },
-      { icon: '📋', name: 'Médio', detail: '18 × 15.5 cm', price: 'base', value: 'medio', cost: 0 },
+      { icon: '📋', name: 'Médio', detail: '18 × 15,5 cm', price: 'base', value: 'medio', cost: 0 },
       { icon: '📓', name: 'Grande', detail: '20 × 17 cm', price: 'base', value: 'grande', cost: 0 },
     ]
   },
@@ -19,21 +19,21 @@ const steps = [
     id: 'paginas',
     eyebrow: 'Etapa 2 de 8',
     title: 'Número de páginas',
-    desc: 'O cancioneiro Cecidilha (o que vendi na feira), tem 128 páginas. Para que o caderno não fique sem volume, sugiro 64 páginas no mínimo. A quantidade também depende do papel escolhido por vocês para o miolo',
+    desc: 'O cancioneiro Cecidilha (o que vendi na feira) tem 128 páginas. Para que o caderno não fique sem volume, sugiro 64 páginas no mínimo. A quantidade também depende do papel escolhido por vocês para o miolo.',
     tip: '<strong>Dica:</strong> cada folha tem frente e verso — 32 páginas equivalem a 16 folhas no miolo.',
     type: 'number',
-    min: 32, max: 128, step: 8, default: 32, unit: 'páginas'
+    min: 32, max: 128, step: 8, default: 64, unit: 'páginas'
   },
   {
     id: 'capa',
     eyebrow: 'Etapa 3 de 8',
     title: 'Material da capa',
-    desc: 'Estamos considerando o linho da cor vermelha.',
-    tip: 'Para dois cadernos 0.5 metros já é o suficiente.',
+    desc: 'Estamos considerando o linho na cor vermelha. Com meio metro de tecido já é possível fazer dois cadernos — o custo abaixo é por caderno.',
+    tip: 'Para dois cadernos, 0,5 metros já é suficiente.',
     type: 'option',
     options: [
-      { icon: '🪢', name: 'Linho puro', price: 'R$ 47,45 / meio metro', value: 'linho-puro', cost: 47.45 },
-      { icon: '🤍', name: 'Linho misto', price: 'R$ 14,95 / meio metro', value: 'linho-misto', cost: 14.95 },
+      { icon: '🪢', name: 'Linho puro', detail: '100% linho natural · textura firme e nobre', price: 'R$ 23,73 / caderno', value: 'linho-puro', cost: 23.73 },
+      { icon: '🤍', name: 'Linho misto', detail: '70% viscose, 30% linho · caimento suave', price: 'R$ 7,48 / caderno', value: 'linho-misto', cost: 7.48 },
     ]
   },
   {
@@ -41,13 +41,49 @@ const steps = [
     eyebrow: 'Etapa 4 de 8',
     title: 'Papel do miolo',
     desc: 'O miolo é onde a história vai ser escrita. O papel certo faz a caneta deslizar bem e dá uma sensação premium a cada página virada.',
-    tip: '<strong>Vergê e Color Plus</strong> têm tom creme suave que cansa menos os olhos do que o branco puro.',
+    tip: '<strong>Os valores abaixo são por folha</strong> e podem variar de acordo com a quantidade de páginas escolhida.',
     type: 'option',
     options: [
-      { icon: '📃', name: 'Pólen 90g', detail: 'Tom creme clássico, qualidade confiável', price: 'incluso', value: 'polen', cost: 0 },
-      { icon: '📄', name: 'Color Plus Marfim 120g', detail: 'Gramatura superior, toque mais encorpado', price: '+R$ 6', value: 'colorplus', cost: 6 },
-      { icon: '✨', name: 'Vergê 90g', detail: 'Linhas sutis na estrutura, visual de papelaria europeia', price: '+R$ 9', value: 'verge', cost: 9 },
-      { icon: '🌿', name: 'Papel artesanal (feito à mão)', detail: 'Fibras visíveis, cada folha única — máximo impacto', price: '+R$ 35', value: 'artesanal', cost: 35 },
+      {
+        icon: '📃',
+        name: 'Pólen Bold 90g',
+        detail: 'Tom creme suave · papel encontrado na maioria dos livros no Brasil · preço acessível e de fácil acesso',
+        price: 'R$ 2,50 / folha',
+        value: 'polen',
+        cost: 2.50
+      },
+      {
+        icon: '✨',
+        name: 'Vergê 120g',
+        detail: 'Papel texturizado · bastante usado em papelaria de casamentos · disponível em várias cores',
+        price: 'R$ 2,60 / folha',
+        value: 'verge',
+        cost: 2.60
+      },
+      {
+        icon: '🇮🇹',
+        name: 'Fedrigoni Color Plus Marfim',
+        detail: 'Papel italiano premium · tom marfim quente · textura levemente aveludada · escrita muito agradável',
+        price: 'R$ 5,84 / folha',
+        value: 'fedrigoni',
+        cost: 5.84
+      },
+      {
+        icon: '🎨',
+        name: 'Canson Montval 300g',
+        detail: 'Papel para pintura · gramatura alta · ótimo acabamento · ideal para técnicas mistas',
+        price: 'R$ 2,85 / folha',
+        value: 'canson',
+        cost: 2.85
+      },
+      {
+        icon: '🌿',
+        name: 'Papel artesanal',
+        detail: 'Folhas recicladas feitas por mim · processo lento com aspecto muito artesanal · gramatura pode ser irregular · possibilidade de experimentações',
+        price: 'R$ 13,00 / folha',
+        value: 'artesanal',
+        cost: 13.00
+      },
     ]
   },
   {
@@ -110,7 +146,7 @@ const steps = [
 
 let currentStep = 0;
 let selections = {};
-let pageCount = 32;
+let pageCount = 64;
 
 const stepNames = {
   tamanho: 'Tamanho', capa: 'Capa', miolo: 'Miolo',
@@ -120,14 +156,33 @@ const stepNames = {
 
 function calcTotal() {
   let total = BASE;
-  const pgExtra = Math.max(0, Math.floor((pageCount - 32) / 8)) * 3;
-  total += pgExtra;
+
+  // Capa: custo já dividido por 2 (meio metro = 2 cadernos)
+  if (selections['capa']) {
+    const capaStep = steps.find(s => s.id === 'capa');
+    const capaOpt = capaStep.options.find(o => o.value === selections['capa']);
+    if (capaOpt) total += capaOpt.cost;
+  }
+
+  // Miolo: custo por folha × número de folhas (páginas ÷ 2)
+  if (selections['miolo']) {
+    const mioloStep = steps.find(s => s.id === 'miolo');
+    const mioloOpt = mioloStep.options.find(o => o.value === selections['miolo']);
+    if (mioloOpt) {
+      const folhas = pageCount / 2;
+      total += mioloOpt.cost * folhas;
+    }
+  }
+
+  // Demais etapas: custo fixo
   steps.forEach(s => {
-    if (s.type === 'option' && selections[s.id]) {
+    if (s.id === 'capa' || s.id === 'miolo' || s.type === 'number') return;
+    if (selections[s.id]) {
       const opt = s.options.find(o => o.value === selections[s.id]);
       if (opt) total += opt.cost;
     }
   });
+
   return Math.round(total);
 }
 
@@ -181,7 +236,7 @@ function render() {
           <div class="opt-icon">${opt.icon}</div>
           <div class="opt-body">
             <div class="opt-name">${opt.name}</div>
-            <div class="opt-detail">${opt.detail}</div>
+            <div class="opt-detail">${opt.detail || ''}</div>
             <div class="opt-price">${opt.price}</div>
           </div>
           <div class="opt-check">
@@ -245,11 +300,23 @@ function renderSummary(container) {
   const div = document.createElement('div');
   div.className = 'step visible';
 
+  // Miolo: mostra custo calculado por folhas
+  let mioloDetalhe = '';
+  if (selections['miolo']) {
+    const mioloStep = steps.find(s => s.id === 'miolo');
+    const mioloOpt = mioloStep.options.find(o => o.value === selections['miolo']);
+    if (mioloOpt) {
+      const folhas = pageCount / 2;
+      const subtotal = (mioloOpt.cost * folhas).toFixed(2).replace('.', ',');
+      mioloDetalhe = ` · ${folhas} folhas · R$ ${subtotal}`;
+    }
+  }
+
   let rows = `
     <div class="sum-row">
       <div>
         <div class="sum-lbl">Páginas</div>
-        <div class="sum-val">${pageCount} páginas</div>
+        <div class="sum-val">${pageCount} páginas · ${pageCount / 2} folhas</div>
       </div>
       <button class="sum-edit" onclick="jumpTo(1)">alterar</button>
     </div>
@@ -259,11 +326,12 @@ function renderSummary(container) {
     if (s.type === 'option') {
       const sel = s.options.find(o => o.value === selections[s.id]);
       if (sel) {
+        const extra = s.id === 'miolo' ? mioloDetalhe : '';
         rows += `
           <div class="sum-row">
             <div>
               <div class="sum-lbl">${stepNames[s.id] || s.id}</div>
-              <div class="sum-val">${sel.name}</div>
+              <div class="sum-val">${sel.name}${extra}</div>
             </div>
             <button class="sum-edit" onclick="jumpTo(${i})">alterar</button>
           </div>
@@ -303,7 +371,7 @@ function renderSummary(container) {
 function sendEmail() {
   const total = calcTotal();
   let body = `Olá, Cecidilha!\n\nGostaria de encomendar um caderno artesanal com as seguintes especificações:\n\n`;
-  body += `• Páginas: ${pageCount}\n`;
+  body += `• Páginas: ${pageCount} (${pageCount / 2} folhas)\n`;
 
   steps.forEach(s => {
     if (s.type === 'option') {
